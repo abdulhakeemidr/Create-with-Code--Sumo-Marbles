@@ -8,11 +8,11 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject PowerupIndicator;
     public bool hasPowerup = false;
 
-    private PlayerController PlayerScript;
     private GameObject player;
     private Rigidbody enemyRb;
     private float PowerupStrength = 10.0f;
     private GameObject cloneIndicator;
+    public int PowerupTimer { get; set; } = 7;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,6 @@ public class EnemyBehaviour : MonoBehaviour
         // Gives script control of enemy movement
         enemyRb = GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
-        PlayerScript = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -29,7 +28,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         // subtracts the players position with the enemys position and normalizes it 
         // to give theenemys movement direction axis
-        Vector3 vectorOffset = (player.transform.position - transform.position).normalized;
+        Vector3 vectorOffset = Vector3.zero;
+        if(player != null) vectorOffset = (player.transform.position - transform.position).normalized;
         // Adds a force to pull the enemy to the player's position
         // speed determines the acceleration value
         enemyRb.AddForce(vectorOffset * speed);
@@ -69,7 +69,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         // Powerup abilities lasts the same amount of time for the enemy
         // as the player
-        yield return new WaitForSeconds(PlayerScript.PowerupTimer);
+        yield return new WaitForSeconds(PowerupTimer);
         hasPowerup = false;
         Destroy(cloneIndicator);
     }

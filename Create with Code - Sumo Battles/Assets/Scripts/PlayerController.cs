@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Joystick leftJoystick;
+    public Joystick rightJoystick;
     public float speed = 5.0f;
     public bool hasPowerup = false;
     public GameObject PowerupIndicator;
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Gets the vertical axis "W & S" for forward input
-        float forwardInput = Input.GetAxis("Vertical");
+        float forwardInput = Input.GetAxis("Vertical") + leftJoystick.Vertical;
 
         //cloneIndicator.transform.position = transform.position + new Vector3(0f, -0.4f, 0f);
 

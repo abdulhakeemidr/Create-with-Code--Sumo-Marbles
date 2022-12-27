@@ -6,6 +6,7 @@ using UnityEngine;
 public class RotateCamera : MonoBehaviour
 {
     public float rotationSpeed;
+    public PlayerController player;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class RotateCamera : MonoBehaviour
     void Update()
     {
         // Gets the Horizontal axis input "A & D"
-        float horizontalInput = Input.GetAxis("Horizontal");
+        float horizontalInput = Input.GetAxis("Horizontal") + player.rightJoystick.Horizontal;
         // Rotates the camera's focal point about the Y axis (left-right)
         transform.Rotate(Vector3.up, -horizontalInput * rotationSpeed * Time.deltaTime);
     }

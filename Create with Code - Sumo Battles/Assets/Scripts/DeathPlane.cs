@@ -13,7 +13,9 @@ public class DeathPlane : MonoBehaviour
 
         if(other.gameObject.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
+            GameManager.instance.GameOverScreen();
         }
     }
 }
