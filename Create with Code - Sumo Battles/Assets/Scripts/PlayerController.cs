@@ -93,5 +93,10 @@ public class PlayerController : MonoBehaviour
             // Debug log checks
             Debug.Log("Collided with: " + collision.gameObject.name + " with Powerup set to " + hasPowerup);
         }
+
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            FindObjectOfType<AudioManager>().Play("MarbleClick");
+        }
     }
 }
