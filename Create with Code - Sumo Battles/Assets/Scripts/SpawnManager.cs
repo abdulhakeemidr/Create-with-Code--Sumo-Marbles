@@ -62,6 +62,8 @@ public class SpawnManager : MonoBehaviour
             // spawns every enemy on a random position
             Instantiate(enemyPrefab, RandomPosition(), enemyPrefab.transform.rotation);
         }
+
+        UIManager.instance.roundNum++;
     }
 
     // returns a Vector3 random position in the X & Z axis to spawn the ball i.e.

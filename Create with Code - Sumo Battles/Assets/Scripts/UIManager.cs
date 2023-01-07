@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,10 +10,17 @@ public class UIManager : MonoBehaviour
     public GameObject pauseUI;
     public GameObject playUI;
     public GameObject GameOverUI;
+    public TextMeshProUGUI roundText;
+    public int roundNum = 0;
 
     void Awake()
     {
         instance = this;
+    }
+
+    void Update() 
+    {
+        roundText.text = "Round " + roundNum;
     }
 
     public void PauseButton()

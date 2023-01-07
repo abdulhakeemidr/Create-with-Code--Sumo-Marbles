@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
         {
             // destroy the powerUp gameObject
             Destroy(other.gameObject);
+            FindObjectOfType<AudioManager>().Play("Pickup");
             // Create a PowerupIndicator gameObject and store a reference to its instance
             // This will be placed around the player (at the player position)
             // for a certain amount of time

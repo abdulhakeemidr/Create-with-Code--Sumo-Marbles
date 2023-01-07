@@ -59,6 +59,8 @@ public class EnemyBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Powerup") && hasPowerup == false)
         {
             Destroy(other.gameObject);
+            
+            FindObjectOfType<AudioManager>().Play("Pickup");
             cloneIndicator = Instantiate(PowerupIndicator, transform.position + new Vector3(0f, -0.4f, 0f), PowerupIndicator.transform.rotation);
             hasPowerup = true;
             StartCoroutine(PowerupCountdownRoutine());
