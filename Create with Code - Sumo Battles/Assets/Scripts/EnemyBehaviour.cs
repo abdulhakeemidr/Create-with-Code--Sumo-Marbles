@@ -13,6 +13,7 @@ public class EnemyBehaviour : MonoBehaviour
     private float PowerupStrength = 10.0f;
     private GameObject cloneIndicator;
     public int PowerupTimer { get; set; } = 7;
+    public float velocity;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,9 @@ public class EnemyBehaviour : MonoBehaviour
         // Adds a force to pull the enemy to the player's position
         // speed determines the acceleration value
         enemyRb.AddForce(vectorOffset * speed);
-        
+
+        //velocity = enemyRb.velocity.magnitude;
+        //Debug.Log(enemyRb.velocity.magnitude);
         // if the enemy has powerup abilities
         if(hasPowerup == true)
         {
