@@ -46,11 +46,11 @@ public class UIManager : MonoBehaviour
 
     public void RestartButton()
     {
-        SceneManager.LoadScene("Game");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
     }
 
     public void MainButton()
     {
-        SceneManager.LoadScene("Menu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 }

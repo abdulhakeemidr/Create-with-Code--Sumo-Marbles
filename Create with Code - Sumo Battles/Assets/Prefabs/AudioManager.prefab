@@ -43,22 +43,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805c84349bb4e7e4988a2ce0528bb8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 0}
+  volume: 0
+  mainMixer: {fileID: 24100000, guid: 2efe35f6ecd212c439d6ed17caddb363, type: 2}
   sounds:
   - name: MarbleClick
     clip: {fileID: 8300000, guid: 6c286f9c11288bf4eb9664a0c14e0bc4, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    output: {fileID: 24300002, guid: 2efe35f6ecd212c439d6ed17caddb363, type: 2}
     source: {fileID: 0}
   - name: Theme
     clip: {fileID: 8300000, guid: 8eff66a4e71ddd14082624182faef7ba, type: 3}
     volume: 1
     pitch: 1
     loop: 1
+    output: {fileID: 24300002, guid: 2efe35f6ecd212c439d6ed17caddb363, type: 2}
     source: {fileID: 0}
   - name: Pickup
     clip: {fileID: 8300000, guid: f2be2a1496df53b4382739d222034711, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    output: {fileID: 24300002, guid: 2efe35f6ecd212c439d6ed17caddb363, type: 2}
     source: {fileID: 0}

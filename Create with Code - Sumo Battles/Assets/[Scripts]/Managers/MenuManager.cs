@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     public void StartButton()
     {
-        SceneManager.LoadScene("Game");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
     }
 
     public void QuitButton()

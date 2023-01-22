@@ -27,16 +27,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // subtracts the players position with the enemys position and normalizes it 
-        // to give theenemys movement direction axis
-        Vector3 vectorOffset = Vector3.zero;
-        if(player != null) vectorOffset = (player.transform.position - transform.position).normalized;
-        // Adds a force to pull the enemy to the player's position
-        // speed determines the acceleration value
-        enemyRb.AddForce(vectorOffset * speed);
-
-        //velocity = enemyRb.velocity.magnitude;
-        //Debug.Log(enemyRb.velocity.magnitude);
+        
         // if the enemy has powerup abilities
         if(hasPowerup == true)
         {
@@ -54,6 +45,20 @@ public class EnemyBehaviour : MonoBehaviour
             if (hasPowerup)
                 Destroy(cloneIndicator); // the powerUp indicator gameObject is destroyed too
         }
+    }
+
+    void FixedUpdate() 
+    {
+        // subtracts the players position with the enemys position and normalizes it 
+        // to give theenemys movement direction axis
+        Vector3 vectorOffset = Vector3.zero;
+        if(player != null) vectorOffset = (player.transform.position - transform.position).normalized;
+        // Adds a force to pull the enemy to the player's position
+        // speed determines the acceleration value
+        enemyRb.AddForce(vectorOffset * speed);
+
+        //velocity = enemyRb.velocity.magnitude;
+        //Debug.Log(enemyRb.velocity.magnitude);
     }
 
     private void OnTriggerEnter(Collider other)
