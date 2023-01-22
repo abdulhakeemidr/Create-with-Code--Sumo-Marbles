@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
     public void StartButton()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+        Time.timeScale = 1;
     }
 
     public void QuitButton()

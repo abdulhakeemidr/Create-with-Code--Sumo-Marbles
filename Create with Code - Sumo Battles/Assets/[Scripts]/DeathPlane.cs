@@ -16,6 +16,7 @@ public class DeathPlane : MonoBehaviour
             //Destroy(other.gameObject);
             other.gameObject.SetActive(false);
             UIManager.instance.GameOverScreen();
+            Time.timeScale = 0;
         }
     }
 }

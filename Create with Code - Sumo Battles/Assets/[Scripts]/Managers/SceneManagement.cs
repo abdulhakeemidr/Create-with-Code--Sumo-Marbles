@@ -7,8 +7,6 @@ public class SceneManagement : MonoBehaviour
 {
     public static SceneManagement instance;
 
-    public Settings playerSettingsSO;
-
     void Awake()
     {
         if(instance != null)

@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
 
     public void PauseButton()
     {
+        AudioListener.pause = true;
         Time.timeScale = 0;
         pauseUI.SetActive(true);
         playUI.SetActive(false);
@@ -32,6 +33,7 @@ public class UIManager : MonoBehaviour
 
     public void ResumeButton()
     {
+        AudioListener.pause = false;
         Time.timeScale = 1;
         pauseUI.SetActive(false);
         playUI.SetActive(true);
@@ -47,6 +49,7 @@ public class UIManager : MonoBehaviour
     public void RestartButton()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+        Time.timeScale = 1;
     }
 
     public void MainButton()

@@ -27,18 +27,24 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if the player has the PowerUp ability
+        if (hasPowerup == true)
+            // the PowerUp indicator gameObject follows the player to signify that it has a powerUp
+            cloneIndicator.transform.position = transform.position + new Vector3(0f, -0.4f, 0f);
+    }
+
+    void FixedUpdate() {
+        
         // Gets the vertical axis "W & S" for forward input
         float forwardInput = Input.GetAxis("Vertical") + leftJoystick.Vertical;
+        float sideInput = leftJoystick.Horizontal;
 
         //cloneIndicator.transform.position = transform.position + new Vector3(0f, -0.4f, 0f);
 
         // moves forward relative to where the game camera faces
         playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed);
+        playerRb.AddForce(focalPoint.transform.right * sideInput * speed);
 
-        // if the player has the PowerUp ability
-        if (hasPowerup == true)
-            // the PowerUp indicator gameObject follows the player to signify that it has a powerUp
-            cloneIndicator.transform.position = transform.position + new Vector3(0f, -0.4f, 0f);
     }
 
     private void OnTriggerEnter(Collider other)
