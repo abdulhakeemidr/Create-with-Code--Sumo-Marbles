@@ -54,6 +54,7 @@ public class UIManager : MonoBehaviour
 
     public void MainButton()
     {
+        AudioListener.pause = false;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 }

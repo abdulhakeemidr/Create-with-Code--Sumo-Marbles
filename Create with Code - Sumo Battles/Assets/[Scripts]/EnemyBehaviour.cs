@@ -10,7 +10,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private GameObject player;
     private Rigidbody enemyRb;
-    private float PowerupStrength = 10.0f;
+    private float PowerupStrength = 20.0f;
     private GameObject cloneIndicator;
     public int PowerupTimer { get; set; } = 7;
     public float velocity;

@@ -6,7 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     public Joystick leftJoystick;
     public Joystick rightJoystick;
-    public float speed = 5.0f;
+    public float speed = 10.0f;
+    public float maxSpeed = 10.0f;
+    public float SpeedDisplay;
     public bool hasPowerup = false;
     public GameObject PowerupIndicator;
 
@@ -44,6 +46,14 @@ public class PlayerController : MonoBehaviour
         // moves forward relative to where the game camera faces
         playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed);
         playerRb.AddForce(focalPoint.transform.right * sideInput * speed);
+
+        // limits the max speed
+        if(playerRb.velocity.magnitude > maxSpeed)
+        {
+            playerRb.velocity = Vector3.ClampMagnitude(playerRb.velocity, maxSpeed);
+        }
+
+        SpeedDisplay = playerRb.velocity.magnitude;
 
     }
 
