@@ -15,10 +15,4 @@ public class DisplayHighestRound : MonoBehaviour
         highestRound = PlayerPrefs.GetInt("Highest Round", 0);
         highestRoundTxt.text = "Highest Round: " + highestRound.ToString();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
