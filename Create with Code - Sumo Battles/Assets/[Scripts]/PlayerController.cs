@@ -42,21 +42,16 @@ public class PlayerController : MonoBehaviour
         float sideInput = leftJoystick.Horizontal;
 
         //cloneIndicator.transform.position = transform.position + new Vector3(0f, -0.4f, 0f);
-        
-        // limits the max speed
-        float playerSpeed = speed;
-        if(playerRb.velocity.magnitude > maxSpeed) playerSpeed = 0;
-        else if(playerRb.velocity.magnitude <= maxSpeed) playerSpeed = speed;
 
         // moves forward relative to where the game camera faces
-        playerRb.AddForce(focalPoint.transform.forward * forwardInput * playerSpeed);
-        playerRb.AddForce(focalPoint.transform.right * sideInput * playerSpeed);
+        playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed);
+        playerRb.AddForce(focalPoint.transform.right * sideInput * speed);
 
         // limits the max speed
-        //if(playerRb.velocity.magnitude > maxSpeed)
-        //{
-        //    playerRb.velocity = Vector3.ClampMagnitude(playerRb.velocity, maxSpeed);
-        //}
+        if(playerRb.velocity.magnitude > maxSpeed)
+        {
+            playerRb.velocity = Vector3.ClampMagnitude(playerRb.velocity, maxSpeed);
+        }
 
         SpeedDisplay = playerRb.velocity.magnitude;
 
