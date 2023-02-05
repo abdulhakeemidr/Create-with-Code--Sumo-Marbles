@@ -6,6 +6,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     public float speed;
     public GameObject PowerupIndicator;
+    [SerializeField] private GameObject explosionEffect;
     public bool hasPowerup = false;
 
     private GameObject player;
@@ -37,13 +38,17 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
         // if the enemy falls of the platform (dojo)
-        if (transform.position.y < -10)
+        if (transform.position.y < -5)
         {
-            // the enemy gameObject is destroyed
-            Destroy(gameObject);
             // if the enemy gameObject has a powerUp ability
             if (hasPowerup)
                 Destroy(cloneIndicator); // the powerUp indicator gameObject is destroyed too
+            
+            GameObject particle = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            
+            FindObjectOfType<AudioManager>().Play("Explosion");
+            // the enemy gameObject is destroyed
+            Destroy(gameObject);
         }
     }
 

@@ -129,5 +129,7 @@ MonoBehaviour:
   speed: 0
   PowerupIndicator: {fileID: 9090203894037312693, guid: 295e7fa8f2ec0aa4d847616defb44202,
     type: 3}
+  explosionEffect: {fileID: 7259132390940827299, guid: 24f1fa762eac27240ac2e742dfc04da9,
+    type: 3}
   hasPowerup: 0
   velocity: 0

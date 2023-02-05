@@ -68,3 +68,10 @@ MonoBehaviour:
     loop: 0
     output: {fileID: 24300002, guid: 2efe35f6ecd212c439d6ed17caddb363, type: 2}
     source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: fb9a5807e36891342a854bc21d7b710a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    output: {fileID: 24300002, guid: 2efe35f6ecd212c439d6ed17caddb363, type: 2}
+    source: {fileID: 0}

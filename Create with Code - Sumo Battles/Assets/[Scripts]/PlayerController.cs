@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
         // & the player doesnt have a powerup (hasPowerup = false)
         if(other.gameObject.CompareTag("Powerup") && hasPowerup == false)
         {
+            Debug.Log("Powerup picked up");
             // destroy the powerUp gameObject
             Destroy(other.gameObject);
             FindObjectOfType<AudioManager>().Play("Pickup");
