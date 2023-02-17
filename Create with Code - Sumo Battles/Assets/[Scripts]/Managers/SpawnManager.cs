@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
     public int EnemyCount;
     public int waveNumber = 1;
 
-    private float SpeedCeiling = 8f;
+    //private float SpeedCeiling = 8f;
     private float spawnRange = 9.0f;
     
     // Start is called before the first frame update

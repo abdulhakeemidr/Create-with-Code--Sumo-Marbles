@@ -28,7 +28,6 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         // if the enemy has powerup abilities
         if(hasPowerup == true)
         {
@@ -54,6 +53,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     void FixedUpdate() 
     {
+        // Enemy doesn't move until Game Start is true
+        if(!PlayerController.GameStart) return;
         // subtracts the players position with the enemys position and normalizes it 
         // to give theenemys movement direction axis
         Vector3 vectorOffset = Vector3.zero;

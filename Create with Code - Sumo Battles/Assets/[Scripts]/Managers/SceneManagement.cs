@@ -24,7 +24,7 @@ public class SceneManagement : MonoBehaviour
 
     void OnEnable() 
     {
-        Debug.Log("Scene play");
+        //Debug.Log("Scene play");
         SceneManager.sceneLoaded += onNewSceneLoaded;
     }
 
@@ -35,7 +35,12 @@ public class SceneManagement : MonoBehaviour
 
     void onNewSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("New Scene");
+        //Debug.Log("New Scene");
         AudioManager.instance.AddVolumeSliders();
+
+        if(scene.name == "Game")
+        {
+            PlayerController.GameStart = false;
+        }
     }
 }

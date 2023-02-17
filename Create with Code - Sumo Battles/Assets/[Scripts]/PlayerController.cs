@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static bool GameStart = false;
     public Joystick leftJoystick;
     public Joystick rightJoystick;
-    public float speed = 10.0f;
+    public float speedRate = 10.0f;
     public float maxSpeed = 10.0f;
     public float SpeedDisplay;
     public bool hasPowerup = false;
     public GameObject PowerupIndicator;
+    [SerializeField] private GameObject playerIndicator;
 
     public int PowerupTimer { get; set; } = 7;
-    private float PowerupStrength = 10.0f;
+    private float PowerupStrength = 20.0f;
     private GameObject focalPoint;
     private Rigidbody playerRb;
     private GameObject cloneIndicator;
@@ -29,14 +31,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerIndicator.transform.position = transform.position + new Vector3(0f, 1.5f, 0f);
         // if the player has the PowerUp ability
         if (hasPowerup == true)
             // the PowerUp indicator gameObject follows the player to signify that it has a powerUp
             cloneIndicator.transform.position = transform.position + new Vector3(0f, -0.4f, 0f);
     }
 
-    void FixedUpdate() {
-        
+    void FixedUpdate() 
+    {
+        // Player doesn't move until Game start is true
+        if(!GameStart) return;
+
         // Gets the vertical axis "W & S" for forward input
         float forwardInput = Input.GetAxis("Vertical") + leftJoystick.Vertical;
         float sideInput = leftJoystick.Horizontal;
@@ -44,13 +50,13 @@ public class PlayerController : MonoBehaviour
         //cloneIndicator.transform.position = transform.position + new Vector3(0f, -0.4f, 0f);
         
         // limits the max speed
-        float playerSpeed = speed;
-        if(playerRb.velocity.magnitude > maxSpeed) playerSpeed = 0;
-        else if(playerRb.velocity.magnitude <= maxSpeed) playerSpeed = speed;
+        float playerSpeedRate = speedRate;
+        if(playerRb.velocity.magnitude > maxSpeed) playerSpeedRate = 0;
+        else if(playerRb.velocity.magnitude <= maxSpeed) playerSpeedRate = speedRate;
 
         // moves forward relative to where the game camera faces
-        playerRb.AddForce(focalPoint.transform.forward * forwardInput * playerSpeed);
-        playerRb.AddForce(focalPoint.transform.right * sideInput * playerSpeed);
+        playerRb.AddForce(focalPoint.transform.forward * forwardInput * playerSpeedRate);
+        playerRb.AddForce(focalPoint.transform.right * sideInput * playerSpeedRate);
 
         // limits the max speed
         //if(playerRb.velocity.magnitude > maxSpeed)
@@ -114,7 +120,7 @@ public class PlayerController : MonoBehaviour
             // the PowerupStrength determines the magnitude of the Force Push
             enemyRb.AddForce(awayFromPlayer * PowerupStrength, ForceMode.Impulse);
             // Debug log checks
-            Debug.Log("Collided with: " + collision.gameObject.name + " with Powerup set to " + hasPowerup);
+            //Debug.Log("Collided with: " + collision.gameObject.name + " with Powerup set to " + hasPowerup);
         }
 
         if(collision.gameObject.CompareTag("Enemy"))
