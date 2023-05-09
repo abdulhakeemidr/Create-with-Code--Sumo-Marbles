@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneManagement : MonoBehaviour
 {
     public static SceneManagement instance;
+    [SerializeField] private Settings playerSettings;
 
     void Awake()
     {
@@ -20,6 +21,11 @@ public class SceneManagement : MonoBehaviour
         }
         //Debug.Log("Hello");
         
+    }
+
+    int LoadJoystickPositioning()
+    {
+        return playerSettings.DropdownOrientation;
     }
 
     void OnEnable() 
@@ -41,6 +47,7 @@ public class SceneManagement : MonoBehaviour
         if(scene.name == "Game")
         {
             PlayerController.GameStart = false;
+            GameManager.instance.ApplyKeyMappingPosition(LoadJoystickPositioning());
         }
     }
 }

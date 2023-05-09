@@ -15,7 +15,7 @@ public class HideTutorial : MonoBehaviour
     void Start()
     {
         //Time.timeScale = 0;
-        allChildren = transform.GetComponentsInChildren<Transform>();
+        //allChildren = transform.GetComponentsInChildren<Transform>();
         StartCoroutine(HideTutorialCountdown());
         currentTime = countdownStartTime;
         StartCoroutine(CountdownToStart());
@@ -36,7 +36,7 @@ public class HideTutorial : MonoBehaviour
         //Debug.Log("Hide Tutorial");
         for(int i = 0; i < allChildren.Length; i++)
         {
-            if(i == 0) continue;
+            //if(i == 0) continue;
             allChildren[i].gameObject.SetActive(false);
         }
     }
